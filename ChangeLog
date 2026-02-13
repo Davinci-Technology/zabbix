@@ -157,9 +157,12 @@ Bug fixes:
 .......PS. [ZBX-25752] reduced memory allocations in preprocessing manager (wiper)
 
 --------------------------------------------------------------------------------
-Changes for 7.4.7rc3
+Changes for 7.4.7
 
-New features:
+7.4.7rc3 was released as 7.4.7 without any changes
+
+--------------------------------------------------------------------------------
+Changes for 7.4.7rc3
 
 Bug fixes:
 ..F....... [ZBX-27508] fixed inline validation rules for item and item prototype forms (gberzina)
