@@ -1,3 +1,4 @@
+<?php declare(strict_types = 0);
 /*
 ** Copyright (C) 2001-2026 Zabbix SIA
 **
@@ -12,17 +13,37 @@
 ** If not, see <https://www.gnu.org/licenses/>.
 **/
 
-package com.zabbix.gateway;
 
-class GeneralInformation
-{
-	static final String APPLICATION_NAME = "Zabbix Java Gateway";
-	static final String REVISION_DATE = "18 February 2026";
-	static final String REVISION = "{ZABBIX_REVISION}";
-	static final String VERSION = "8.0.0alpha2";
+/**
+ * @var CView $this
+ */
+?>
 
-	static void printVersion()
-	{
-		System.out.println(String.format("%s v%s (revision %s) (%s)", APPLICATION_NAME, VERSION, REVISION, REVISION_DATE));
-	}
-}
+<script>
+	const view = new class {
+		#import_csrf_token;
+
+		init({import_csrf_token}) {
+			this.#import_csrf_token = import_csrf_token;
+			this.#initEvents();
+		}
+
+		#initEvents () {
+			document.querySelector(`.${ZBX_STYLE_HEADER_CONTROLS} .js-import`)
+				.addEventListener('click', () => this.#import());
+		}
+
+		#import() {
+			return PopUp('popup.import',
+				{
+					rules_preset: 'dashboard',
+					[CSRF_TOKEN_NAME]: this.#import_csrf_token
+				},
+				{
+					dialogueid: 'popup_import',
+					dialogue_class: 'modal-popup-generic'
+				}
+			)
+		}
+	};
+</script>
